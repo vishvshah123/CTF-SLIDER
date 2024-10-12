@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elixir Progress Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #4e8b30; /* Clash of Clans style background */
+    }
+
+    .progress-bar-container {
+      width: 400px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, 0.2); /* Initially transparent background */
+      border-radius: 10px;
+      position: relative;
+      margin: 20px auto;
+      border: 3px solid #000000; /* Subtle border similar to the image */
+      overflow: visible;
+    }
+
+    .progress-bar-fill {
+      margin-top: 3px;
+      z-index: 2;
+      width: 0%; /* Start from 0 width */
+      height: 40%;
+      border-radius: 10px;
+      background-color: rgba(235, 214, 110, 0.9); /* Pink fill color */
+      position: absolute;
+      transition: width 0.5s ease;
+      right: 2px; /* Start the fill from the right */
+    }
+
+    .progress-bar-fill-back {
+      z-index: 1;
+      width: 0%; /* Start from 0 width */
+      height: 100%;
+      border-radius: 5px;
+      background-color: rgba(226, 185, 8, 0.9); /* Pink fill color */
+      position: absolute;
+      transition: width 0.5s ease;
+      right: 0; /* Start the fill from the right */
+    }
+
+    .progress-icon {
+      z-index: 3;
+      width: 45px;
+      height: 45px;
+      position: absolute;
+      top: -7px; /* Position above the progress bar */
+      right: 2px; /* Static position outside the progress bar */
+      background: url('./icons/goldcoc-removebg-preview.png') no-repeat center;
+      background-size: cover;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #e483ef;
+      border-width: 3px;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="elixirProgress"></div>
+    <div class="progress-bar-fill-back" id="elixirProgressBack"></div>
+    <div class="progress-icon" id="elixirIcon"></div>
+  </div>
+
+  <button class="button" onclick="completeTask()">Complete Task</button>
+
+  <script>
+    const totalTasks = 20;
+    let completedTasks = 0;
+
+    function completeTask() {
+      if (completedTasks < totalTasks) {
+        completedTasks++;
+        let progressPercent = (completedTasks / totalTasks) * 99;
+        let progressPercentBack = (completedTasks / totalTasks) * 100;
+        
+        // Update elixir bar fill
+        document.getElementById('elixirProgress').style.width = progressPercent + '%';
+        document.getElementById('elixirProgressBack').style.width = progressPercentBack + '%';
+      }
+    }
+  </script>
+
+</body>
+</html>

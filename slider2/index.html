@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elixir Progress Bar</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col items-center justify-center h-screen bg-green-700">
+
+  <div class="progress-bar-container relative w-96 h-8 bg-white bg-opacity-20 rounded-full overflow-hidden border-4 border-gray-500 my-5">
+    <!-- Progress Fill Bar -->
+    <div class="progress-bar-fill bg-pink-600 bg-opacity-90 h-full absolute" id="elixirProgress"></div>
+
+    <!-- Static Elixir Icon Positioned at the Rightmost (absolute) -->
+    <div class="progress-icon absolute top-1/2 right-[-20px] transform -translate-y-1/2 w-10 h-10 bg-center bg-no-repeat" id="elixirIcon"></div>
+  </div>
+
+  <button class="button py-2 px-4 bg-pink-200 text-black rounded-md hover:bg-pink-300" onclick="completeTask()">Complete Task</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

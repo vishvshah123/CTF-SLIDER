@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elixir Progress Bar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Tailwind configuration for background images */
+    .progress-icon {
+      background: url('./icons/goldcoc-removebg-preview.png') no-repeat center;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body class="font-sans text-center mt-12 bg-[#4e8b30]">
+
+  <div class="progress-bar-container w-[400px] h-[30px] bg-white/20 rounded-lg relative mx-auto border-3 border-[#000000] overflow-visible">
+    <div class="progress-bar-fill absolute z-10 h-[40%] rounded-lg bg-[rgba(235,214,110,0.9)] transition-[width] duration-500" id="elixirProgress" style="right: 0; width: 0%;"></div>
+    <div class="progress-bar-fill-back absolute z-0 w-full h-full rounded-lg bg-[rgba(226,185,8,0.9)] transition-[width] duration-500" id="elixirProgressBack" style="right: 0; width: 0%;"></div>
+    <div class="progress-icon absolute z-20 w-[45px] h-[45px] top-[-7px] right-2" id="elixirIcon"></div>
+  </div>
+
+  <button class="button px-4 py-2 bg-[#e483ef] border-3 rounded-md text-black cursor-pointer mt-5" onclick="completeTask()">Complete Task</button>
+
+  <script>
+    const totalTasks = 20;
+    let completedTasks = 0;
+
+    function completeTask() {
+      if (completedTasks < totalTasks) {
+        completedTasks++;
+        let progressPercent = (completedTasks / totalTasks) * 99; // For the top fill
+        let progressPercentBack = (completedTasks / totalTasks) * 100; // For the bottom fill
+
+        // Update elixir bar fill
+        document.getElementById('elixirProgress').style.width = progressPercent + '%';
+        document.getElementById('elixirProgressBack').style.width = progressPercentBack + '%';
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+

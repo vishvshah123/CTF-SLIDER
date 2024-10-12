@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Progress Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #4e8b30; /* Clash of Clans style background */
+    }
+
+    /* Progress bar container */
+    .progress-bar-container {
+      width: 400px;
+      height: 30px;
+      background-color: #f2e8a0; /* Light gold background */
+      border-radius: 20px;
+      position: relative;
+      margin: 20px auto;
+      border: 3px solid #000000; /* Dark border */
+      overflow: hidden;
+    }
+
+    /* Fill background (unfilled part) */
+    .progress-bar-fill-back {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: #f2e8a0; /* Light gold color for unfilled background */
+      position: absolute;
+      border-radius: 10px;
+      right: 0;
+      transition: width 0.5s ease;
+    }
+
+    /* Filled progress (right to left) */
+    .progress-bar-fill {
+      z-index: 2;
+      width: 0%; /* Start from 0 width */
+      height: 100%;
+      background-color: #ffcc33; /* Solid gold fill color */
+      border-radius: 10px;
+      position: absolute;
+      right: 0; /* Start from the right */
+      transition: width 0.5s ease;
+    }
+
+    /* Gold Icon style (adjusted for size and position) */
+    .progress-icon {
+      z-index: 3;
+      width: 45px; /* Adjusted size */
+      height: 45px; /* Adjusted size */
+      position: absolute;
+      top: -2.5px; /* Adjust positioning vertically */
+      right: -0px; /* Adjust positioning to overlap the bar */
+      background: url('./icons/goldcoc-removebg-preview.png') no-repeat center;
+      background-size: cover;
+    }
+
+    /* Button style */
+    .button {
+      padding: 10px 20px;
+      background-color: #e483ef;
+      border-width: 3px;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Progress bar container with the gold icon -->
+  <div class="progress-bar-container">
+    <div class="progress-icon" id="elixirIcon"></div> <!-- Adjusted icon -->
+    <div class="progress-bar-fill-back" id="elixirProgressBack"></div> <!-- Unfilled background -->
+    <div class="progress-bar-fill" id="elixirProgress"></div> <!-- Filled bar -->
+  </div>
+
+  <!-- Button to complete task -->
+  <button class="button" onclick="completeTask()">Complete Task</button>
+
+  <script>
+    const totalTasks = 20;
+    let completedTasks = 0;
+
+    function completeTask() {
+      if (completedTasks < totalTasks) {
+        completedTasks++;
+        let progressPercent = (completedTasks / totalTasks) * 99;
+        let progressPercentBack = (completedTasks / totalTasks) * 100;
+        
+        // Update the progress bar fill
+        document.getElementById('elixirProgress').style.width = progressPercent + '%';
+        document.getElementById('elixirProgressBack').style.width = progressPercentBack + '%';
+      }
+    }
+  </script>
+
+</body>
+</html>
+
